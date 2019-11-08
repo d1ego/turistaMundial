@@ -1,6 +1,6 @@
 #include "Casilla.h"
 
-Casilla::Casilla(string a, int pos, int pre, int est): nombre(a), posicion(pos), precio(pre), estado(est)
+Casilla::Casilla(string a, int pos, int pre, int est, int propie): nombre(a), posicion(pos), precio(pre), estado(est), propietario(propie)
 {
 
 }
@@ -8,6 +8,11 @@ Casilla::Casilla(string a, int pos, int pre, int est): nombre(a), posicion(pos),
 void Casilla::Setprecio(int pre)
 {
 	precio = pre;
+}
+
+void Casilla::Setpropietario(int pro)
+{
+	propietario = pro;
 }
 
 void Casilla::Setestado(int est)
