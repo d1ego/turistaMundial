@@ -1,6 +1,7 @@
 class opJugador
   {
     private:
+      Jugador jugador;
     public:
       void pagar(int posicionCasilla);
       void mover(int posicionCasilla, int idJugador);
