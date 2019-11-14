@@ -4,14 +4,22 @@
 class Jugador
 {
 	private:
-        int id;
-        int dinero;
-        int posicion;
+		int id;
+		string nickname;
+		int dinero;
+		int posicion;
         
         //listado de propiedades??
 	public:
-        Jugador(int id, int dinero, int posicion);  
-        void setId();
-        int getDinero();
-        void getPosicion();
+        	Jugador(int id, string nickname, int dinero, int posicion);  
+        	void setId();
+        	int getDinero();
+        	void getPosicion();
+		void sacar();
+		void comprar();
+		void vender();
+		void terminaTurno();
+		void hipotecar();
+		void pagar();
+		
 };
