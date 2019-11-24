@@ -1,17 +1,31 @@
-#include "Tablero.h"
-#include "Casilla.h"
-#include "Dado.h"
+#include "Juego.h"
 #include <stdio.h>
-#include <vector>
+#include <stdlib.h>
 #include <iostream>
-#include <string.h>
-#include <iterator>
+
 using namespace std;
 
-int main(int argc, char const *argv[])
+int main(int argc, char* argv[])
 {
-	Tablero table(40);
-	table.Cargardatos();
-	table.ObtieneCasillas();
-	return 0;
+  int numJugadores, x;
+
+  cout << "Ingresa el numero de Jugadores: "<< endl;
+  cin >> numJugadores;
+  //Juego nuevoJuego[numJugadores];
+
+  Juego nuevoJuego(numJugadores);
+
+  //Jugador jugadores[numJugadores];
+
+  cout << "Listo para iniciar: "<< endl;
+  cin >> x;
+
+  nuevoJuego.menuP();
+
+
+  //Jugador prueba(5);
+//  cout << "que jugador quieres saber: "<<endl;
+//  cin >> x;
+//  cout << "El jugador tiene: "<<jugadores[x].getDinero()<<endl;
+  return 0;
 }

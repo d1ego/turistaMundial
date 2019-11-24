@@ -7,7 +7,7 @@ using namespace std;
 
 Jugador::Jugador()
 {
-  //id = _id;
+  id = 0;
   //color = _color;
   dinero = 1500;
   posicion = 1;
@@ -23,12 +23,19 @@ void Jugador::tirar()
   dadoA = 1 + rand()%(7-1);
   dadoB = 1 + rand()%(7-1);
 
+  cout<< dadoA<<endl;
+  cout<< dadoB<<endl;
   if (dadoA == dadoB) {
+    cout<<"Tirada doble: "<<endl;
+    total = dadoA + dadoB;
+    moverJugador(total);
     /* tiraDoble(total); */
   }
   else
   {
     total = dadoA + dadoB;
+    moverJugador(total);
+    //total = dadoA + dadoB;
   }
 }
 
@@ -37,8 +44,10 @@ void Jugador::moverJugador(int numCasillas)
   setPosicion(numCasillas);
 }
 
-void Jugador::comprarPropiedad(int _id)
+void Jugador::comprarPropiedad(Jugador jugador, Casilla casilla)
 {
+  casilla.Setpropietario(jugador.getId());
+  jugador.paga(casilla.Getprecio());
   /*
   Propiedad.setDueno(id);
   */
@@ -55,8 +64,10 @@ void Jugador::pagarRenta(Jugador jugadorPaga, Jugador jugadorRecibe, int monto)
   jugadorRecibe.recibe(monto);
 }
 
-void Jugador::hipotecarPropiedad(Jugador jugador)
+void Jugador::hipotecarPropiedad(Jugador jugador, Casilla casilla)
 {
+  casilla.Setpropietario(0);
+  darPrestamo(jugador, casilla);
   /*
   Obtener id Propiedad
   cambiar bandera dueno ahora es banco
@@ -64,8 +75,11 @@ void Jugador::hipotecarPropiedad(Jugador jugador)
   */
 }
 
-void Jugador::venderPropiedad(Jugador jugadorVende, Jugador jugadorCompra)
+void Jugador::venderPropiedad(Jugador jugadorVende, Jugador jugadorCompra, Casilla casilla)
 {
+  casilla.Setpropietario(jugadorCompra.getId());
+  jugadorCompra.paga(casilla.Getprecio());
+  jugadorVende.recibe(casilla.Getprecio());
   /*
   Obtener id de venderPropiedad
   cambiar bandera dueno ahora es jugadorCompra
@@ -95,6 +109,10 @@ void Jugador::recibe(int monto)
 void Jugador::setPosicion(int _posicion)
 {
   posicion = posicion + _posicion;
+  if(posicion >40)
+  {
+    posicion = posicion - 40;
+  }
 }
 
 int Jugador::getPosicion()
@@ -121,4 +139,9 @@ void Jugador::setDinero(int cantidad)
 int Jugador::getDinero()
 {
   return dinero;
+}
+void Jugador::darPrestamo(Jugador jugador, Casilla casilla)
+{
+  jugador.recibe(casilla.Getprecio());
+  //RESERVA = RESERVA - casilla.Getprecio();
 }

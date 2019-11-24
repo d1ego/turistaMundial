@@ -1,3 +1,4 @@
+#include "Casilla.h"
 class Jugador
 {
 private:
@@ -10,11 +11,11 @@ public:
   Jugador();
   void tirar();
   void moverJugador(int);
-  void comprarPropiedad(int);
+  void comprarPropiedad(Jugador, Casilla);
   void terminaTurno();
   void pagarRenta(Jugador, Jugador, int);
-  void hipotecarPropiedad(Jugador);
-  void venderPropiedad(Jugador, Jugador);
+  void hipotecarPropiedad(Jugador, Casilla);
+  void venderPropiedad(Jugador, Jugador, Casilla);
   //void construirHotel(Jugador, Casilla);
 
   void paga(int);
@@ -28,4 +29,5 @@ public:
 
   void setDinero(int);
   int getDinero();
+  void darPrestamo(Jugador, Casilla);
 };
