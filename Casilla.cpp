@@ -1,8 +1,22 @@
 #include "Casilla.h"
+#include <string.h>
+#include <stdio.h>
+#include <iostream>
+using namespace std;
 
-Casilla::Casilla(string a, int pos, int pre, int est, int propie): nombre(a), posicion(pos), precio(pre), estado(est), propietario(propie)
+
+Casilla::Casilla(int pos, char* a,  int pre, int est, int propie)
 {
+	posicion = pos;
 
+	int tam = strlen(a)+1;
+	char aux[tam];
+	strcpy(aux, a);
+	nombre = new char[tam];
+	strcpy(nombre, aux);
+	precio = pre;
+	estado = est;
+	propietario = propie;
 }
 
 void Casilla::Setprecio(int pre)
@@ -20,7 +34,7 @@ void Casilla::Setestado(int est)
 	estado = est;
 }
 
-string Casilla::Getnombre()
+char* Casilla::Getnombre()
 {
 	return nombre;
 }
@@ -39,3 +53,8 @@ int Casilla::Getestado()
 {
 	return estado;
 }
+
+int Casilla::Getpropietario()
+{
+	return propietario;
+}	

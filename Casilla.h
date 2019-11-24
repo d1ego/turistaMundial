@@ -1,21 +1,28 @@
+#ifndef CASILLA_H_
+#define CASILLA_H_
+
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 class Casilla
 {
 	private:
-		string nombre;
 		int posicion;
+		char* nombre;
 		int precio;
 		int estado;
 		int propietario;
 	public:
-		Casilla(string a, int pos, int pre, int est, int prop);
+		Casilla(int pos, char* a, int pre, int est, int prop);
 		void Setprecio(int a);
 		void Setestado(int a);
-		void Casilla::Setpropietario(int pro);
-		string Getnombre();
+		void Setpropietario(int pro);
+		char* Getnombre();
 		int Getposicion();
 		int Getprecio();
 		int Getestado();
+		int Getpropietario();
 };
+
+#endif
